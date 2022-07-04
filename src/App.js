@@ -2,6 +2,10 @@ import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import AboutPage from './Pages/aboutPage'
 
+const HomePage = () =>  <h1>Welcome Home</h1>
+const ContactPage = () => <div>Welcome contact page</div>
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -9,21 +13,17 @@ function App() {
       <Route 
       path="/" 
       exact
-      render={() => {
-        return <h1>Welcome Home</h1>
-      }}/>
+      element={<HomePage/>}/>
     
       <Route 
       path="/contact" 
       exact
-      render={() => {
-        return <div>Welcome contact page</div>
-      }}/>
+      element={<ContactPage />}/>
 
      <Route 
       path="/about" 
       exact
-      component = {<AboutPage/>}
+      element = {<AboutPage/>}
       />
       </Routes>
     </BrowserRouter>
