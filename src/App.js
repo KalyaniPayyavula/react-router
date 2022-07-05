@@ -1,32 +1,16 @@
-import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import AboutPage from './Pages/aboutPage'
-
-const HomePage = () =>  <h1>Welcome Home</h1>
-const ContactPage = () => <div>Welcome contact page</div>
-
+import { useState } from 'react';
+import DataPage from './Pages/DataPage'
+import LoginPage from './Pages/LoginPage';
 
 function App() {
-  return (
-    <BrowserRouter>
-    <Routes>
-      <Route 
-      path="/" 
-      exact
-      element={<HomePage/>}/>
-    
-      <Route 
-      path="/contact" 
-      exact
-      element={<ContactPage />}/>
+  
+  const [login, setLogin] = useState(false)
 
-     <Route 
-      path="/about" 
-      exact
-      element = {<AboutPage/>}
-      />
-      </Routes>
-    </BrowserRouter>
+  let loginHandler = () =>{
+    setLogin(!login)
+  }
+  return ( 
+    login ? <DataPage/> : <LoginPage onClick={loginHandler}/>
   );
 }
 
