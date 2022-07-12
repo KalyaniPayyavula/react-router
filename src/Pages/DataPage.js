@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
 import Stack from '@mui/material/Stack'
+import HomePage from './homePage'
+import messageContext from '../context/messageContext'
+import LoginPage from './LoginPage'
 
-const HomePage = () =>  <h1>Welcome Home</h1>
 const ContactPage = () => <div>Welcome contact page</div>
 
 function DataPage(){
+  const [message, setMessage] = useState("im being shared")
     return(
+    <>
+    <LoginPage/>
         <BrowserRouter>
+        <messageContext.Provider value={[message, setMessage]}>
         <Stack>
             <NavLink
             to="/"
@@ -63,7 +69,9 @@ function DataPage(){
         }
           />
           </Routes>
+          </messageContext.Provider>
         </BrowserRouter>
+        </>
     )
 }
 

@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 describe('Visit login page', () => {
-    it('application loaded successfully', () => {
-      cy.visit('/')
+    beforeEach('application loaded successfully', () => {
+     cy.visit('/')
     })
-  
+      
     it("Login successfully and displaying different pages", ()=>{
       cy.get('[id="username-id"]').type("Kalyani")
       cy.get('[id="password-id"]').type("Kalyani")

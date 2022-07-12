@@ -2,11 +2,15 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import { PropTypes } from 'prop-types';
+import {useNavigate} from 'react-router-dom';
 
-function LoginPage({onClick}){
+function LoginPage(){  
+  const navigate = useNavigate();
+  let handleLogin = ()=>{
+    navigate("/about")
+  }
     return(
-    <Stack spacing={2} style={{width: "25%", marginLeft: "35%"}}>
+      <Stack spacing={2} style={{width: "25%", marginLeft: "35%"}}>
       <TextField
       id="username-id"
       label="Username" 
@@ -18,12 +22,8 @@ function LoginPage({onClick}){
       type="password"
       variant="standard">
      </TextField>
-      <Button variant = "contained" id="login-button-id" onClick={onClick}>Login</Button>
-      </Stack>
-    )
-}
+      <Button variant = "contained" id="login-button-id" onClick={handleLogin}>Login</Button>
+      </Stack> 
+)}
 
 export default LoginPage;
-LoginPage.propTypes = {
-    onClick : PropTypes.func.isRequired
-}
